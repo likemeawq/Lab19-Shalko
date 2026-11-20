@@ -79,6 +79,7 @@ Console.WriteLine($"Букв: {CountLetters(text)}");
 Console.WriteLine($"Цифр: {CountDigits(text)}");
 Console.WriteLine($"Пробелов: {CountCharacter(text, ' ')}");
 Console.WriteLine($"Слов: {CountWords(text)}");
+Console.WriteLine($"Гласных: {CountVowels(text)}");
 Console.WriteLine($"Без пробелов по краям: [{text.Trim()}]");
 Console.WriteLine($"Верхний регистр: [{text.ToUpper()}]");
 Console.WriteLine($"Замена пробелов: [{text.Replace(' ', '_')}]");
@@ -158,4 +159,21 @@ int CountWords(string text)
 {
     string[] words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
     return words.Length;
+}
+
+int CountVowels(string text)
+{
+    int count = 0;
+
+    foreach (char symbol in text)
+    {
+        char lower = char.ToLowerInvariant(symbol);
+        if (lower == 'а' || lower == 'е' || lower == 'ё' || lower == 'и' || lower == 'о' ||
+            lower == 'у' || lower == 'ы' || lower == 'э' || lower == 'ю' || lower == 'я')
+        {
+            count++;
+        }
+    }
+
+    return count;
 }
